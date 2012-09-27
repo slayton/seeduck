@@ -1,0 +1,127 @@
+<html>
+	<head>
+	<link href="index.css" rel="stylesheet">
+	<script src="jquery.js"></script>
+
+	</head>
+	<body>
+
+	<div id='video-title'></div>	
+	<div id="video-container">
+		
+		<video  id="player">
+ 		<source src="" type="video/mp4" />
+		  Your browser does not support the video tag.
+</video>
+	</div>
+	
+	<div id="list-container">
+	
+<!--
+		<select size=18 align=center id='list'>
+     	<option value='moon.mp4'>Moonrise</option>
+     	</select>
+     -->
+		
+		<?php
+
+		ini_set('display_errors', 'On');
+
+	 	$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('../',
+	 													RecursiveDirectoryIterator::FOLLOW_SYMLINKS),
+                                          RecursiveIteratorIterator::CHILD_FIRST);
+	 	// build the list of video files
+	 	$name_array = array();
+	 	$path_array = array();
+	 	$count = 1;
+ 		foreach ($iterator as $path) {
+ 			$extension = $path->getExtension();
+ 			$fName = $path->getFilename();
+			
+
+			$comp =  strcmp($extension, 'mp4') == 0 || strcmp($extension, 'mkv') == 0;
+ 			if ($comp){
+ 				$name_array[] = $fName;
+			 	$path_array[] = $path;
+    		}
+ 		}
+
+ 	 	array_multisort($name_array, $path_array);
+
+ 	 	echo "<select size=18 align=center id='list'>";
+		// // $i = 0;
+		for ($i = 0; $i < count($name_array); ++$i)
+		{
+		 	$p = $path_array[$i];
+		 	$n = $name_array[$i];
+		 	echo "<option value='$p'> $n </option>";
+		}
+	    echo "</select>"
+
+
+
+		?>     	 
+	
+		
+		<div class='button'>
+			Stream Box
+		</div>
+
+
+	</div>
+
+	
+	
+	</body>
+
+	<script>
+	var initialRun = true;
+	// var visible  = true;
+	$select = $('select');
+		function toggleList(){
+
+			var duration = initialRun ? 1000 : 350;
+			$list = $('#list-container');
+			$video = $('#video-container');
+			$button = $('.button');
+
+			var h = $list.height();
+
+			var listShowing = (h > 0)
+			var listHeight = listShowing ? '0px':'90%';
+			$list.animate( {height: listHeight}, duration);
+			$select.toggle(!listShowing);
+			// if (listShowing)
+			// 	$button.html('Show');
+			// else
+			// 	$button.html('Hide');
+		};
+
+		$select.change(function() {
+  			//alert($sel.val());
+  				toggleList();
+  			$player = $('#player');
+  			$player.attr('src', $select.val());
+  			$player.attr('poster', 'images/pre-loading.gif');
+  			$player.attr("controls","controls");
+
+  			$player.get(0).load();
+  			$player.get(0).play();
+
+  			title = $('select option:selected').text();
+  			$('#video-title').html("Now Showing: " + title);
+		});
+
+		$btn = $('.button').click(function(){
+			toggleList();
+		})
+		
+		$(document).ready(function() {
+  			toggleList();
+  			initialRun = false;
+		});	
+		
+
+	</script>
+	<img src='./images/pre-loading.gif' id='pre-cache'>
+</html>	

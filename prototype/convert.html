@@ -1,0 +1,113 @@
+<html>
+	<head>
+	<link href="convert.css" rel="stylesheet">
+	<script src="jquery.js"></script>
+
+	</head>
+	<body>
+
+	<div id='titlebox'>
+		Stream Box Audio Fixer		
+	</div>
+	
+	<div id='main-body'>
+		<div id='container-right'>
+			<div id='control'>
+				Buttons, and options go here
+			</div>
+			<div id='status'>
+				Fun gif here!
+			</div>
+
+
+		</div>
+		<div id='container-left'>
+					
+			<div id="list-container">
+				<span>MKV List</span>
+				<?php
+
+				ini_set('display_errors', 'On');
+
+			 	$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('../',
+			 													RecursiveDirectoryIterator::FOLLOW_SYMLINKS),
+		                                          RecursiveIteratorIterator::CHILD_FIRST);
+			 	// build the list of video files
+			 	$name_array = array();
+			 	$path_array = array();
+			 	$count = 1;
+		 		foreach ($iterator as $path) {
+		 			$extension = $path->getExtension();
+		 			$fName = $path->getFilename();
+					
+
+					$comp =  strcmp($extension, 'mkv') == 0;
+		 			if ($comp){
+		 				$name_array[] = $fName;
+					 	$path_array[] = $path;
+		    		}
+		 		}
+
+		 	 	array_multisort($name_array, $path_array);
+
+		 	 	echo "<select size=18 align=center id='list'>";
+				// // $i = 0;
+				for ($i = 0; $i < count($name_array); ++$i)
+				{
+				 	$p = $path_array[$i];
+				 	$n = $name_array[$i];
+				 	echo "<option value='$p'> $n </option>";
+				}
+			    echo "</select>";
+
+
+				?>     	 
+
+
+			</div>
+
+			<div id='info-container'>
+				<span>Media Info</span>
+				<div id='info-text'>
+								
+				</div>
+			</div>
+		</div>
+	</div>
+	</body>
+
+	<script>
+	var initialRun = true;
+	// var visible  = true;
+	$select = $('select');
+
+	$select.change(function() {
+			
+		//title = $('select option:selected').text();
+		//$('#video-title').html("Now Showing: " + title);
+		// $.post('mediainfo.php', {'file': $('select').val()}, function() {
+  //      	window.location = $this.attr('href');
+  		$('div#status').html("<img src='./images/converting.gif'>");
+  		var jsonData = JSON.stringify( {filepath: $select.val()} );
+  		var postData = {json:jsonData};
+	
+	// UNCOMMENT OUT FOR USE	
+  //	$.ajax(
+  // 		{
+  //           url: './getinfo.php', //This is the current doc
+  //           type: "POST",
+  //           data: postData,
+  //           success: function(data)
+  //           {
+  //               $('#info-text').html("<pre><code>" + data + "</code></pre>"); 
+  //           }
+  //       }
+  //   	);  
+
+	});
+
+		
+		
+
+	</script>
+</html>	
