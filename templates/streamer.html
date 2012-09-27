@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='streamer.css') }}">		
+		<script src="{{ url_for('static', filename='jquery.js') }}"></script>		
+		<script src="{{ url_for('static', filename='streamer.js') }}"></script>	
+	</head>
+	<body>
+
+	<div id='video-title'>
+	</div>	
+	
+	<div id="video-container">
+		<video  id="player"> <source src="" type="video/mp4" />Your browser does not support the video tag. </video>
+	</div>
+	
+	<div id='list-button'>
+			
+	</div>
+	<div id="list-container">
+		<div id='video-list'>
+		{% for n, p in fileData %}
+			<div class='listing' data-path='{{p}}'> {{n}} </div>
+		{% endfor %}
+		</div>
+	</div>
+	<img src="{{ url_for('static', filename='pre-loading.gif') }}" id='pre-cache'>
+
+	</body>
+	
+</html>	
