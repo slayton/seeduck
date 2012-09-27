@@ -1,44 +1,50 @@
 var initialRun = true;
-var spacerString = '&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp';
+
+
 
 function toggleList(){
 
 	var duration = initialRun ? 650 : 350;
+	
 	$list = $('#list-container');
 	$video = $('#video-container');
 
-	var h = $list.height();
+	var w = $list.width();
+	var listShowing = w > 50;
+	var newWidth = listShowing ? '1px':'420px';
 
-	var listShowing = (h > 15)
-	var listHeight = listShowing ? '15px':'90%';
-
+	
 	var doToggle = function(){
-		toggleButton(listShowing);
-		$('#video-list').toggle(!listShowing);
+		toggleButton( listShowing );
+		$('#video-list').toggle( !listShowing );
 	}
-	// if this list isn't showing yet we want to remove the the round corners, it make the animation look better
-	if (!listShowing) {
+	
+	if ( !listShowing) {
 		doToggle();
-		$list.animate( {height: listHeight}, duration);
+		$list.animate( {width: newWidth}, duration);
 	}
 	else
-		$list.animate( {height: listHeight}, duration, 'swing', doToggle);
+		$list.animate( {width: newWidth}, duration, 'swing', doToggle);
 
 };
 
 function toggleButton(listShowing){
+	var ss = '<br><br><br><br><br><br>'; // spacer string
 	if ( listShowing ){
 		
-		$('#list-button').html("▼" + spacerString + "Show" + spacerString + "▼");
+		$('#list-button').html("⇒" +ss + "⇒" +ss + "⇒" +ss + "⇒" +ss + "⇒" +ss + "⇒"+ss + "⇒");
 		// $('#list-button').css('box-shadow', '-2px 2px 4px #222');
+		$('#list-button').css('-webkit-border-top-right-radius', '10px');	
 		$('#list-button').css('-webkit-border-bottom-right-radius', '10px');
-		$('#list-button').css('-webkit-border-bottom-left-radius', '10px');	
+		
 	}
     else{
-    	$('#list-button').html("▲" + spacerString + "Hide" + spacerString + "▲");
+    	$('#list-button').html("⇐" +ss + "⇐" +ss + "⇐" +ss + "⇐" +ss + "⇐" +ss + "⇐"+ss + "⇐");
+
+///    	$('#list-button').html("⇐" + spacerString + "H<br>I<br>D<br>E" + spacerString + "⇐");
     	// $('#list-button').css('box-shadow', '0px 0px 0px #222');
+		$('#list-button').css('-webkit-border-top-right-radius', '0px');	
     	$('#list-button').css('-webkit-border-bottom-right-radius', '0px');
-		$('#list-button').css('-webkit-border-bottom-left-radius', '0px');	
     }
 }
 
@@ -66,10 +72,10 @@ function playVideo(){
 $(document).ready(function() {
 	toggleList();
 	initialRun = false;
+	$('#list-container').height($('#list-button').height()+60);
 		
-	var $listButton = $('#list-button');
-	$listButton.click(toggleList);
-
+	$('#list-button').click(toggleList);
+	
 	$('.listing').click(playVideo);
 
 

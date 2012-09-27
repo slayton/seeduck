@@ -35,15 +35,47 @@ html{
 #player{
 	width:98%;
 	height:90%;
-	margin: 10 10 10 10;
+	margin: 10px 10px 10px 10px;
+}
+
+#list-button{
+
+	position: absolute;
+    top: 100px;
+    left: 0px;
+    height: 0 auto;
+    width: 20px;
+    
+    text-align: center;
+
+    padding-top:30px;
+    padding-bottom:30px;
+
+    font-size: 15px;
+    font-family: monospace;
+    font-weight: bold;    
+    color:#AA0;
+
+    background: #FF7;
+    border:1px solid #DD5;
+	
+
+    z-index:5;
+}
+
+#list-button:hover{
+
+	background: #EE5;
+	color:#880;
+
 }
 
 #list-container
 {
 	position: absolute;
-    top: 0px;
-    height: 15px;
-    width: 400px;
+    top: 100px;
+    height: 700px;
+    width: 20px;
 
     background: #FFA;
     border:1px solid #DD5;
@@ -51,42 +83,19 @@ html{
     
     z-index: 1;
    
+    -webkit-border-top-right-radius: 10px;
     -webkit-border-bottom-right-radius: 10px;
-    -webkit-border-bottom-left-radius: 10px;
 
 }
 
-#list-button {
-
-	position: absolute;
-    top: -1px;
-    height:18px;
-    width: 400px;
-    
-    text-align: center;
-    font-size: 15px;
-    font-family: monospace;
-    font-weight: bold;    
-    
-    background: #FF7;
-    border:1px solid #DD5;
-	
-	-webkit-border-bottom-right-radius: 10px;
-    -webkit-border-bottom-left-radius: 10px;
-   
-    z-index:5;
-}
-#list-button:hover{
-	background: #EE5;
-
-}
 #video-list{
 	position:absolute;
     top:0;
     bottom:0;
+    height: 0px auto;
     width:380px;
-	
-	margin: 25px 10px 10px 10px;
+	padding: 10px 10px 10px 10px;
+	margin: 10px 10px 10px 10px;
 	
 	background-color: #FFF;
 	border:1px solid #DD5;
@@ -107,6 +116,7 @@ html{
 	background-color:#9EB7E0;
 	bolor:#FFF;
  }
+
 
 img#pre-cache{
 	visibility: hidden;
