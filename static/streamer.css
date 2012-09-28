@@ -1,24 +1,26 @@
 
 html{
-	background-color: #222222;
+	background: #FFF;
+	background-repeat : no-repeat;
 }
 
 #video-container
 {
 	position:absolute;
-	background-color:#222;
-	background-image: -webkit-gradient(
-  			linear, left top, left bottom, from(rgba(100,100,100,0.2)),
-  			to(rgba(0,0,0,0.5)) );
-
-	top:30px;
-	left:1%;
-	width:98%;
-	height:90%;
-
-	z-index: 0;
+	background-color:#000;
 	
+	top:60px;
+	bottom:60px;
+	left:80px;
+	right:80px;
+	
+	text-align: center;
+
     border:1px solid #000;
+
+	-webkit-box-shadow: 0 2px 10px #000;
+	-moz-box-shadow: 0 2px 10px #000;
+	box-shadow: 0 2px 10px #000;	
 
 }
 #video-title{
@@ -30,18 +32,47 @@ html{
 	font-family: sans-serif;
 	font-size: 20px;
 	
-	z-index: 0;
 }
+
+
+.splash{
+	color:#DDD;
+	text-align: center;
+
+	font-size: 120px;
+	font-family: Juice;
+
+}
+
+div.splash p{
+	margin-bottom: 0px;
+}
+
+.sub-splash{
+	color:#DDD;
+	text-align:  center;
+	font-size: 30px;
+	font-family: Juice;
+	line-height: -20px;
+}
+div.sub-splash p{
+	background-color: green;
+	margin-top: -25px;
+	padding-top: 4px;
+
+}
+
 #player{
-	width:98%;
-	height:90%;
-	margin: 10px 10px 10px 10px;
+	
+	width:100%;
+	height:100%;	
 }
 
 #list-button{
 
 	position: absolute;
-    top: 100px;
+    top: 10%;
+    bottom: 10%;
     left: 0px;
     height: 0 auto;
     width: 20px;
@@ -52,100 +83,67 @@ html{
     padding-bottom:30px;
 
     font-size: 15px;
-    font-family: monospace;
-    font-weight: bold;    
-    color:#AA0;
+    font-weight: bold;  
+	overflow: hidden;
+    color:#BBB;
+    border:1px solid #222;
+    z-index:5;	
 
-    background: #FF7;
-    border:1px solid #DD5;
-	
+    /* gradient in gradients.css*/
 
-    z-index:5;
 }
 
 #list-button:hover{
-
-	background: #EE5;
-	color:#880;
-
+	color:#DDD;
+    /* gradient in gradients.css*/
+}
+#list-button span{
+    vertical-align: middle;    
 }
 
 #list-container
 {
 	position: absolute;
-    top: 100px;
-    height: 700px;
-    width: 20px;
+    top: 10%;
+    bottom:10%;
+    width: 10px;
 
-    background: #FFA;
-    border:1px solid #DD5;
-	box-shadow:-2px 2px 4px #222;
-    
-    z-index: 1;
+    border:1px solid #555;
    
     -webkit-border-top-right-radius: 10px;
     -webkit-border-bottom-right-radius: 10px;
-
+    /* gradient in gradients.css*/
 }
 
-#video-list{
+.file-list{
 	position:absolute;
     top:0;
     bottom:0;
     height: 0px auto;
     width:380px;
+
+	overflow: auto;
+	
 	padding: 10px 10px 10px 10px;
 	margin: 10px 10px 10px 10px;
 	
-	background-color: #FFF;
-	border:1px solid #DD5;
+	background-color: #ABC;
 }
 
 .listing{
+	color:#000;
 
 	font-size: 14px;
 	font-family: monospace;
-	
+
 	overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    margin: 0px 5px 1px 5px; 
-	
+    padding: 0px 5px 1px 5px; 
 }
+
 .listing:hover{
-	background-color:#9EB7E0;
-	bolor:#FFF;
- }
-
-
-img#pre-cache{
-	visibility: hidden;
-
-
+	background-color:#FFF;
+	color:#000;
+	cursor: pointer; cursor: hand	 
 }
-
-/*.button {
-	display: inline-block;
-	outline: none;
-	cursor: pointer;
-	text-align: center;
-	text-decoration: none;
-	font: 14px/100% Arial, Helvetica, sans-serif;
-	padding: .5em 2em .55em;
-	text-shadow: 0 1px 1px rgba(0,0,0,.3);
-	-webkit-border-radius: .5em; 
-	-moz-border-radius: .5em;
-	border-radius: .5em;
-	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-	box-shadow: 0 1px 2px rgba(0,0,0,.2);
-	background-color:black;
-	color:white;
-}
-.button:hover {
-	text-decoration: none;
-}
-.button:active {
-	position: relative;
-	top: 1px;
-}*/

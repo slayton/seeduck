@@ -16,7 +16,7 @@ function toggleList(){
 	
 	var doToggle = function(){
 		toggleButton( listShowing );
-		$('#video-list').toggle( !listShowing );
+		$('.file-list').toggle( !listShowing );
 	}
 	
 	if ( !listShowing) {
@@ -32,16 +32,17 @@ function toggleButton(listShowing){
 	var ss = '<br><br><br><br><br><br>'; // spacer string
 	if ( listShowing ){
 		
-		$('#list-button').html("⇒" +ss + "⇒" +ss + "⇒" +ss + "⇒" +ss + "⇒" +ss + "⇒"+ss + "⇒");
+		$('#list-button').html("<span>" + "▶" +ss +  "▶" +ss + "▶" +ss + "▶"+ss + "▶" + "</span>");
 		// $('#list-button').css('box-shadow', '-2px 2px 4px #222');
 		$('#list-button').css('-webkit-border-top-right-radius', '10px');	
 		$('#list-button').css('-webkit-border-bottom-right-radius', '10px');
 		
 	}
     else{
-    	$('#list-button').html("⇐" +ss + "⇐" +ss + "⇐" +ss + "⇐" +ss + "⇐" +ss + "⇐"+ss + "⇐");
+    	//$('#list-button').html("<span>" + "◀" +ss +   "◀" +ss + "◀" +ss + "◀"+ss + "◀" + "</span>");
+		$('#list-button').html("<span>" + "▶" +ss +  "▶" +ss + "▶" +ss + "▶"+ss + "▶" + "</span>");
 
-///    	$('#list-button').html("⇐" + spacerString + "H<br>I<br>D<br>E" + spacerString + "⇐");
+///    	$('#list-button').html("◀" + spacerString + "H<br>I<br>D<br>E" + spacerString + "◀");
     	// $('#list-button').css('box-shadow', '0px 0px 0px #222');
 		$('#list-button').css('-webkit-border-top-right-radius', '0px');	
     	$('#list-button').css('-webkit-border-bottom-right-radius', '0px');
@@ -50,8 +51,9 @@ function toggleButton(listShowing){
 
 function playVideo(){
 
+	toggleList();
 	$name = $(this).html();
-	$path = $(this).data('path');
+	$path = "./" + $(this).data('path');
 
 	$player = $('#player');
 	$player.attr('src', $path);
@@ -60,7 +62,9 @@ function playVideo(){
 	$player.get(0).load();
 	$player.get(0).play();
 
-	$('#video-title').html("Now Showing: " + $name);
+	$('.splash').hide();
+
+	$('#video-title').html("Now Showing: " + $path);
 }
 
 // $select.change(function() {
@@ -70,13 +74,27 @@ function playVideo(){
 // });
 
 $(document).ready(function() {
-	toggleList();
+	//toggleList();
 	initialRun = false;
-	$('#list-container').height($('#list-button').height()+60);
-		
-	$('#list-button').click(toggleList);
+
+	// Hide the file-list
+	$('.file-list').toggle( false );
+	// toggle the button to true
+	toggleButton(true);
 	
+	// Assign the callbacks
+	$('#list-button').click(toggleList);
 	$('.listing').click(playVideo);
+
+	// Misc hacks, set the body of the document to the same size as the window
+	$('body').height($(window).height()); 
+	$(window).resize(function(){
+		$('body').height($(window).height()); 
+	})
+	
+	// Disable scrolling up and down
+	document.body.style.overflow = 'hidden';
+
 
 
 });	

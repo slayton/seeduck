@@ -1,9 +1,10 @@
 from flask import Flask, render_template, url_for
-import os
+import os, re
+import util
 
 app = Flask(__name__)
 
-BASE_DIR = 'downloads/'
+BASE_DIR = 'static/downloads'
 
 @app.route('/')
 def index():
@@ -16,23 +17,11 @@ def stream():
 
 @app.route('/list')
 def list():
-	files = listFilesInDirectory();
+	files = util.listFilesInDirectory(BASE_DIR);
 	str = ''
 	for f in files:
 		str = str + f + '<br>'
 
 	return str
 
-def listFilesInDirectory():
-	
-	nameList = [];
-	pathList = [];
-	for path,dirs,files in os.walk(BASE_DIR):
-		for fn in files:
-			nameList.append(fn);
-			pathList.append(os.path.join(path,fn))
 
-	info = []
-	info.append(nameList)
-	info.append(pathList)
-	return info;
