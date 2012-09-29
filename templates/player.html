@@ -1,0 +1,66 @@
+<!doctype html>
+<html id='stream-background'>
+	<head>
+		<title>SEEDuck Player</title>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='player.css') }}">		
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='effects.css') }}">
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='misc.css') }}">		
+		<script src="{{ url_for('static', filename='jquery.js') }}"></script>		
+		<script src="{{ url_for('static', filename='player.js') }}"></script>	
+	</head>
+	<body >
+	<div id='root-url' data-url="{{url_for('static', filename='downloads/')}}"></div>
+	<div id='video-title'></div>	
+	
+	<div id="video-container">
+		<div class='splash-holder'>
+			<div class='splash depth'> <p>SEEDuck</p> </div>
+			<div class='sub-splash'> <p>embrace the waterfowl swarm</p> </div>
+		</div>
+		<video  id="player" source src="" type="video/mp4" />
+	</div>
+		
+	<div id='drawer-button' class='vertical-button'></div>
+
+	<div id="drawer">
+		<div class='file-list'>
+		{% for n, p, a, v in fileData %}
+			<!--<div class='listing' data-path='{{p}}' <data-vc='{{v}}' data-ac='{{a}}'> {{n}} </div>-->
+			<div class='listing {{a}}' data-path='{{p}}'> {{n}} </div>
+		{% endfor %}
+		</div>
+		<div class='file-info'>
+			
+			<div class='styled-checkbox'>
+				
+				<div class="chk_play_video">
+					<input type="checkbox" value="None" id="chk_play_video" name="check" checked="checked"/>
+					<label for="chk_play_video"></label>
+				</div>
+				<div class='styled-checkbox-label'>Start playback on click</div>
+
+
+				<div class="chk_show_mkv">
+					<input type="checkbox" value="None" id="chk_show_mkv" name="check" checked="checked"/>
+					<label for="chk_show_mkv"></label>
+				</div>
+				<div class='styled-checkbox-label'>Show MKV files</div>
+
+
+				<div class="chk_show_ac3">
+					<input type="checkbox" value="None" id="chk_show_ac3" name="check" />
+					<label for="chk_show_ac3"></label>
+				</div>
+				<div class='styled-checkbox-label'>Show files with AC3 audio</div>
+
+			</div>
+			<hr>
+			<div class='horizontal-button' id='transcode'>Transcode File</div>
+		</div>
+	</div>
+	<img src="{{ url_for('static', filename='pre-loading.gif') }}" class='pre-cache'/>
+
+	</body>
+	
+</html>	

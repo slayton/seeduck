@@ -10,28 +10,54 @@
 	background-image: linear-gradient(to top, #474747 0%, #1C1C1C 100%);
 }
 
-#list-button{
+.vertical-button{
 
-    background-image: linear-gradient(right , #787878 27%, #414142 71%);
-	background-image: -o-linear-gradient(right , #787878 27%, #414142 71%);
-	background-image: -moz-linear-gradient(right , #787878 27%, #414142 71%);
-	background-image: -webkit-linear-gradient(right , #787878 27%, #414142 71%);
-	background-image: -ms-linear-gradient(right , #787878 27%, #414142 71%);
+    background-image: linear-gradient(right , #193 27%, #141 71%);
+	background-image: -o-linear-gradient(right , #193 27%, #141 71%);
+	background-image: -moz-linear-gradient(right , #193 27%, #141 71%);
+	background-image: -webkit-linear-gradient(right , #193 27%, #141 71%);
+	background-image: -ms-linear-gradient(right , #193 27%, #141 71%);
 }
 
-#list-button:hover{
-	background-image: linear-gradient(right , #949294 27%, #414142 71%);
-	background-image: -o-linear-gradient(right , #949294 27%, #414142 71%);
-	background-image: -moz-linear-gradient(right , #949294 27%, #414142 71%);
-	background-image: -webkit-linear-gradient(right , #949294 27%, #414142 71%);
-	background-image: -ms-linear-gradient(right , #949294 27%, #414142 71%);
+.vertical-button:hover{
+	background-image: linear-gradient(right , #1b3 27%, #152 71%);
+	background-image: -o-linear-gradient(right , #1b3 27%, #152 71%);
+	background-image: -moz-linear-gradient(right , #1b3 27%, #152 71%);
+	background-image: -webkit-linear-gradient(right , #1b3 27%, #152 71%);
+	background-image: -ms-linear-gradient(right , #1b3 27%, #152 71%);
+	cursor: pointer; cursor: hand	 
+
 }
 
-#list-container{
-	background-image: linear-gradient(right , #2E2E2E 27%, #515151 71%);
-	background-image: -o-linear-gradient(right , #2E2E2E 27%, #515151 71%);
-	background-image: -moz-linear-gradient(right , #2E2E2E 27%, #515151 71%);
-	background-image: -webkit-linear-gradient(right , #2E2E2E 27%, #515151 71%);
-	background-image: -ms-linear-gradient(right , #2E2E2E 27%, #515151 71%);
+#drawer{
+	background-image: linear-gradient(right , #333 27%, #555 71%);
+	background-image: -o-linear-gradient(right , #333 27%, #555 71%);
+	background-image: -moz-linear-gradient(right , #333 27%, #555 71%);
+	background-image: -webkit-linear-gradient(right , #333 27%, #555 71%);
+	background-image: -ms-linear-gradient(right , #333 27%, #555 71%);
 }
 
+.horizontal-button{
+	border:1px solid #1B7A2B; 
+	
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#148F25), color-stop(100%, #0D3D10));
+ 	background-image: -webkit-linear-gradient(top, #193, #141);
+ 	background-image: -moz-linear-gradient(top, #193, #141);
+ 	background-image: -ms-linear-gradient(top, #193, #141);
+ 	background-image: -o-linear-gradient(top, #193, #141);
+ 	background-image: linear-gradient(top, #193, #141);
+}
+
+.horizontal-button:hover{
+	border:1px solid #128121; background-color: #19ad2d;
+	
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b3), color-stop(100%, #152));
+ 	background-image: -webkit-linear-gradient(top, #1b3, #152);
+ 	background-image: -moz-linear-gradient(top, #1b3, #152);
+ 	background-image: -ms-linear-gradient(top, #1b3, #152);
+ 	background-image: -o-linear-gradient(top, #1b3, #152);
+ 	background-image: linear-gradient(top, #1b3, #152);
+	cursor: pointer; cursor: hand	 
+
+
+}
