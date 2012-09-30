@@ -13,6 +13,9 @@ def index():
 @app.route('/stream')
 def stream():
 	fileInfo = util.listFilesInDirectory(BASE_DIR);
+	print fileInfo
+	#for n, p, a, c in fileInfo:
+	#	print p
 	return render_template('player.html', fileData = zip( fileInfo[0], fileInfo[1], fileInfo[2], fileInfo[3]))
 
 @app.route('/list')

@@ -1,5 +1,5 @@
 #!/usr/bin/python
 
-from player import app
+from views import app
 app.debug = True
 app.run()

@@ -21,17 +21,34 @@
 		<video  id="player" source src="" type="video/mp4" />
 	</div>
 		
-	<div id='drawer-button' class='vertical-button'></div>
-
-	<div id="drawer">
+	<div id='file-drawer-button' class='drawer-button vertical-button'></div>
+	<div class="drawer" id='file-drawer'>
 		<div class='file-list'>
 		{% for n, p, a, v in fileData %}
-			<!--<div class='listing' data-path='{{p}}' <data-vc='{{v}}' data-ac='{{a}}'> {{n}} </div>-->
+			<!--<div class='listing' data-path='{{p}}' data-vc='{{v}}' data-ac='{{a}}'> {{n}} </div>-->
 			<div class='listing {{a}}' data-path='{{p}}'> {{n}} </div>
 		{% endfor %}
 		</div>
-		<div class='file-info'>
-			
+	</div>
+
+	<div id='upload-drawer-button' class='drawer-button vertical-button'></div>
+	<div class="drawer" id='upload-drawer'>
+		
+	</div>
+
+	<div id='settings-drawer-button' class='drawer-button vertical-button'></div>
+	<div class="drawer" id='settings-drawer'>
+		
+	</div>
+
+	<img src="{{ url_for('static', filename='pre-loading.gif') }}" class='pre-cache'/>
+
+	</body>
+	
+</html>	
+
+<!-- STYLED CHECK BOXES BELOW -->
+<!-- <div class='file-info'>
 			<div class='styled-checkbox'>
 				
 				<div class="chk_play_video">
@@ -53,14 +70,7 @@
 					<label for="chk_show_ac3"></label>
 				</div>
 				<div class='styled-checkbox-label'>Show files with AC3 audio</div>
-
 			</div>
 			<hr>
 			<div class='horizontal-button' id='transcode'>Transcode File</div>
-		</div>
-	</div>
-	<img src="{{ url_for('static', filename='pre-loading.gif') }}" class='pre-cache'/>
-
-	</body>
-	
-</html>	
+		</div> -->

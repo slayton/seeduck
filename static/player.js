@@ -6,68 +6,79 @@
 
 
 var initialRun = true;
-var shiftVideoPlayer = true;
+//var shiftVideoPlayer = true;
 var videoPlaying = false;
+var duration = 350;
+var openDrawerWidth = '320px';
+var closedDrawerWidth = '0px';
 
-function toggleDrawer(){
+function toggleFileDrawer(){
 
-	var duration = 350;
+	$targetDrawer = $('#file-drawer');
+	$otherDrawers = $('.drawer:not(#file-drawer)')
+	executeDrawerToggle($targetDrawer, $otherDrawers);
+
+}
+
+function toggleUploadDrawer(){
+	$targetDrawer = $('#upload-drawer');
+	$otherDrawers = $('.drawer:not(#upload-drawer)')
+	executeDrawerToggle($targetDrawer, $otherDrawers);
+}
+function toggleSettingsDrawer(){
+	$targetDrawer = $('#settings-drawer');
+	$otherDrawers = $('.drawer:not(#settings-drawer)')
+	executeDrawerToggle($targetDrawer, $otherDrawers);
+}
+
+function executeDrawerToggle($target, $others){
+
+	var w = $targetDrawer.width();
+	var isDrawerOpen = w > 50;
+	var newDrawerWidth = isDrawerOpen ? closedDrawerWidth:openDrawerWidth;
 	
-	$drawer = $('#drawer');
+	$target.animate( {width: newDrawerWidth}, duration);
+	//$others.animate( {width: 0}, duration);
 
-	var w = $drawer.width();
-	var drawerOpen = w > 50;
-	var newDrawerWidth = drawerOpen ? '0px':'320px';
-	
-	var tmpToggleFcn = function(){
-		// setDrawerButtonStyle( drawerOpen );
-		$('.file-list').toggle( !drawerOpen );
-		$('.file-info').toggle( !drawerOpen );
-	}
-	
-	if ( !drawerOpen) {
-		tmpToggleFcn();
-		$drawer.animate( {width: newDrawerWidth}, duration);
-	}
-
-	else{
-		$drawer.animate( {width: newDrawerWidth}, duration, 'swing', tmpToggleFcn);
-	}
-	if (shiftVideoPlayer){
-		var newVideoLeft  = drawerOpen ? '80px':'290px';
-		var newVideoRight = drawerOpen ? '80px':'-130px';
-		$('#video-container').animate( {left: newVideoLeft, right:newVideoRight}, duration)
-	}
-
-};
+}
 
 // function setDrawerButtonStyle(drawerOpen){
 // 	var ss = '<br><br><br><br><br><br>'; // spacer string
 // 	if ( drawerOpen ){
 		
-// 		$('#drawer-button').html("<span>" + "▶" +ss +  "▶" +ss + "▶" +ss + "▶"+ss + "▶" + "</span>");
-// 		// $('#drawer-button').css('box-shadow', '-2px 2px 4px #222');
-// 		// $('#drawer-button').css('-webkit-border-top-right-radius', '10px');	
-// 		// $('#drawer-button').css('-webkit-border-bottom-right-radius', '10px');
+// 		$('.drawer-button').html("<span>" + "▶" +ss +  "▶" +ss + "▶" +ss + "▶"+ss + "▶" + "</span>");
+// 		// $('.drawer-button').css('box-shadow', '-2px 2px 4px #222');
+// 		// $('.drawer-button').css('-webkit-border-top-right-radius', '10px');	
+// 		// $('.drawer-button').css('-webkit-border-bottom-right-radius', '10px');
 		
 // 	}
 //     else{
-//     	//$('#drawer-button').html("<span>" + "◀" +ss +   "◀" +ss + "◀" +ss + "◀"+ss + "◀" + "</span>");
-// 		$('#drawer-button').html("<span>" + "▶" +ss +  "▶" +ss + "▶" +ss + "▶"+ss + "▶" + "</span>");
+//     	//$('.drawer-button').html("<span>" + "◀" +ss +   "◀" +ss + "◀" +ss + "◀"+ss + "◀" + "</span>");
+// 		$('.drawer-button').html("<span>" + "▶" +ss +  "▶" +ss + "▶" +ss + "▶"+ss + "▶" + "</span>");
 
-// ///    	$('#drawer-button').html("◀" + spacerString + "H<br>I<br>D<br>E" + spacerString + "◀");
-//     	// $('#drawer-button').css('box-shadow', '0px 0px 0px #222');
-// 		// $('#drawer-button').css('-webkit-border-top-right-radius', '0px');	
-//   //   	$('#drawer-button').css('-webkit-border-bottom-right-radius', '0px');
+// ///    	$('.drawer-button').html("◀" + spacerString + "H<br>I<br>D<br>E" + spacerString + "◀");
+//     	// $('.drawer-button').css('box-shadow', '0px 0px 0px #222');
+// 		// $('.drawer-button').css('-webkit-border-top-right-radius', '0px');	
+//   //   	$('.drawer-button').css('-webkit-border-bottom-right-radius', '0px');
 //     }
 // }
 
+function toggleAC3(){
+	if ( $('#chk_show_ac3').attr('checked') )
+		$('.listing.AC3').show();
+	else
+		$('.listing.AC3').hide();
+
+	console.log($('#chk_show_ac3').attr('checked'))
+}
+
 function listingSelected(){
 	if( $('#chk_play_video').attr('checked') )
-//		loadVideo()
+		loadVideo();
 
 	$('.listing').removeClass('selected');
 	$(this).addClass('selected');
+	
 }
 function loadVideo(){
 
@@ -80,40 +91,49 @@ function loadVideo(){
 		$player.attr('poster', 'static/pre-loading.gif');
 		$player.attr("controls","controls");
 	
-		//$player.get(0).load();
-		//$player.get(0).play();
+		$player.get(0).load();
+		$player.get(0).play();
 	
 		$('.splash-holder').hide();
 
 		$('#video-title').html("Now Showing: " + $path);
 }
 
+
 function initializeTheDrawer(){
 // Hide the file-list
-	$('.file-list').toggle( false );
-	$('.file-info').toggle( false );
+	//$('.file-list').toggle( false );
 
 	// toggle the button to true
 	//setDrawerButtonStyle(true); 
-	var ss = '<br><br><br><br><br><br>'; // spacer string
-	$('#drawer-button').html("<span>" + "▶" +ss +  "▶" +ss + "▶" +ss + "▶"+ss + "▶" + "</span>");
+	//var ss = '<br><br><br><br><br><br>'; // spacer string
+	//$('.drawer-button').html("<span>" + "▶" +ss +  "▶" +ss + "▶" +ss + "▶"+ss + "▶" + "</span>");
 	
+
 	// Assign the callbacks
-	$('#drawer-button').click(toggleDrawer);
+	$('#file-drawer-button').click(toggleFileDrawer);
+	$('#upload-drawer-button').click(toggleUploadDrawer);
+	$('#settings-drawer-button').click(toggleSettingsDrawer);
+
 	$('.listing').click(listingSelected);
 
+	$('.chk_show_ac3').click(toggleAC3);
+	$('.chk_show_ac3').click();  // execute method once
 }
 
 
 $(document).ready(function() {
-	//toggleDrawer();
-	initializeTheDrawer();
-	
-	// Misc hacks, set the body of the document to the same size as the window
+	// HACK to set the background of the body to fill the window
 	$('body').height($(window).height()); 
 	$(window).resize(function(){
 		$('body').height($(window).height()); 
 	})
+
+
+	//toggleDrawer();
+	initializeTheDrawer();
+	
+	
 	
 	// Disable scrolling up and down
 	document.body.style.overflow = 'hidden';

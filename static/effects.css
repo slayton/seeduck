@@ -29,7 +29,40 @@
 
 }
 
-#drawer{
+.vertical-button#upload-drawer-button{
+	background-image: -ms-linear-gradient(right, #DD1 27%, #661 71%);
+	background-image: -moz-linear-gradient(right, #DD1 27%, #661 71%);
+	background-image: -o-linear-gradient(right, #DD1 27%, #661 71%);
+	background-image: -webkit-gradient(linear, right top, left top, color-stop(.27, #dd1), color-stop(.71, #661));
+	background-image: -webkit-linear-gradient(right, #DD1 27%, #661 71%);
+	background-image: linear-gradient(to left, #DD1 27%, #661 71%);
+}
+.vertical-button#upload-drawer-button:hover{
+	background-image: -ms-linear-gradient(right, #DF1 27%, #672 71%);
+	background-image: -moz-linear-gradient(right, #DF1 27%, #672 71%);
+	background-image: -o-linear-gradient(right, #DF1 27%, #672 71%);
+	background-image: -webkit-gradient(linear, right top, left top, color-stop(.27, #dF1), color-stop(.71, #672));
+	background-image: -webkit-linear-gradient(right, #DF1 27%, #672 71%);
+	background-image: linear-gradient(to left, #DF1 27%, #672 71%);
+}
+.vertical-button#settings-drawer-button{
+	background-image: -ms-linear-gradient(right, #22B 27%, #005 71%);
+	background-image: -moz-linear-gradient(right, #22b 27%, #005 71%);
+	background-image: -o-linear-gradient(right, #22b 27%, #005 71%);
+	background-image: -webkit-gradient(linear, right top, left top, color-stop(.27, #22b), color-stop(.71, #005));
+	background-image: -webkit-linear-gradient(right, #22b 27%, #005 71%);
+	background-image: linear-gradient(to left, #22B 27%, #005 71%);
+}
+.vertical-button#settings-drawer-button:hover{
+	background-image: -ms-linear-gradient(right, #26B 27%, #016 71%);
+	background-image: -moz-linear-gradient(right, #26b 27%, #016 71%);
+	background-image: -o-linear-gradient(right, #26b 27%, #016 71%);
+	background-image: -webkit-gradient(linear, right top, left top, color-stop(.27, #26b), color-stop(.71, #016));
+	background-image: -webkit-linear-gradient(right, #26b 27%, #016 71%);
+	background-image: linear-gradient(to left, #26B 27%, #016 71%);
+}
+
+.drawer{
 	background-image: linear-gradient(right , #333 27%, #555 71%);
 	background-image: -o-linear-gradient(right , #333 27%, #555 71%);
 	background-image: -moz-linear-gradient(right , #333 27%, #555 71%);
