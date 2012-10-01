@@ -14,10 +14,10 @@
 		<div id='grid-holder'>
 			<div class='grid-spacer'><p></p></div>
 			{% for n, p, a, v in fileData %}
-			<div class='grid-item' data-path="{{p}}">
+			<div class='grid-item {{a}}' data-path="{{p}}">
 				<div class='grid-item-title'>{{n}}</div>
 				<div class='grid-item-image'> </div>
-				<div class='grid-item-icon {{a}}'> </div>
+				<div class='grid-item-icon'> </div>
 			</div>
 			{% endfor %}			
 			<div class='grid-spacer'></div>

@@ -22,6 +22,8 @@ $(document).ready(function() {
 
 	// Set the HxW ratio of the grid items
 	//$('.grid-item').css('height', ($('.grid-item:first').width() * 1.3) + 'px');
-	$('.grid-item-icon.AC3').html("<img src='./static/images/warning.png'>");
+	$('.grid-item.AC3 > .grid-item-icon').html("<img src='./static/images/warning.png'>");
+	$('.grid-item.AC3').hide();
 	$('.grid-item').click(itemClicked);
+
 });	
