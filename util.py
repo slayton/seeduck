@@ -1,10 +1,6 @@
-import os, re, json, urllib2
+import os, re, json
 from filenamefilter import FileNameFilter as FNF
 from pymediainfo import MediaInfo
-from xml.dom.minidom import parse, parseString
-
-APIKEY = 'A759044985ADC3E7';
-BASE_URL ='http://thetvdb.com/api'
 	
 def listFilesInDirectory(path):
 	
@@ -23,7 +19,8 @@ def listFilesInDirectory(path):
 				
 				f = fnf.filterString(fn) # filter out un wanted tags
 				f = re.sub('[.]', ' ', f, f.count('.')-1) #replace all but last . with ' '
-				fileNames.append(f)
+				f = f.split('.') # split on . to remove extension
+				fileNames.append(f[0])
 				
 				filePaths.append(os.path.join(path,fn))
 				
@@ -32,6 +29,11 @@ def listFilesInDirectory(path):
 				videoCodecs.append(c['video'])
 	
 	info = []
+	
+	z = zip(fileNames, filePaths, audioCodecs, videoCodecs);
+	z.sort()
+	[fileNames, filePaths, audioCodecs, videoCodecs]  = zip(*z);
+	print "SORTING!"
 	
 	info.append(fileNames)
 	info.append(filePaths)

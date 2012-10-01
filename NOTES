@@ -3,6 +3,7 @@ REQUIREMENTS:
 	subprocess
 	dom
 	flask
+	requests
 
 
 ================ using pymediainfo ======================

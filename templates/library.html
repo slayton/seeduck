@@ -17,11 +17,14 @@
 			<div class='grid-item {{a}}' data-path="{{p}}">
 				<div class='grid-item-title'>{{n}}</div>
 				<div class='grid-item-image'> </div>
+				<div class='grid-item-overlay'> </div>
 				<div class='grid-item-icon'> </div>
 			</div>
 			{% endfor %}			
 			<div class='grid-spacer'></div>
 		</div>
+		<div id='poster-dir' data-url="{{url_for('static', filename='posters/')}}"></div>
+
 	</body>
 	
 </html>	

@@ -11,7 +11,6 @@
 		
 	</head>
 	<body >
-	<div id='root-url' data-url="{{url_for('static', filename='downloads/')}}"></div>
 	<a href="../library"><img id='back-button' src="{{ url_for('static', filename='images/arrow-left.png')}}"></a>
 	<div id='video-title'></div>
 	<div id="video-container">
@@ -44,6 +43,8 @@
 
 	<img src="{{ url_for('static', filename='images/loading2.gif') }}" class='pre-cache'/>
 	<div id='selected_video' data-name='{{videoPath}}'></div>
+	<div id='root-url' data-url="{{url_for('static', filename='downloads/')}}"></div>
+
 	</body>
 	
 </html>	
