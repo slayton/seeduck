@@ -12,12 +12,21 @@ fileInfo = util.listFilesInDirectory(BASE_DIR);
 def index():
 	return "hello";
 
-@app.route('/player')
-def viewPlayer():
-	#fileInfo = util.listFilesInDirectory(BASE_DIR);
-	#for n, p, a, c in fileInfo:
-	#	print p
+@app.route('/player/')
+def viewPlayerNoArg():
 	return render_template('player.html', fileData = zip( fileInfo[0], fileInfo[1], fileInfo[2], fileInfo[3]))
+
+@app.route('/player/<filename>')
+def viewPlayer(filename):
+	try:
+		idx = fileInfo[0].index(filename)
+	except ValueError:
+		idx = -1;
+	if not idx == -1:
+		return render_template('player.html', fileData = zip( fileInfo[0], fileInfo[1], fileInfo[2], fileInfo[3]), videoPath=fileInfo[1][idx])
+	else:
+		return render_template('player.html', fileData = zip( fileInfo[0], fileInfo[1], fileInfo[2], fileInfo[3]), videoPath=' ')		
+
 
 @app.route('/library')
 def viewLibrary():

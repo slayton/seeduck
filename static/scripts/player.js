@@ -12,6 +12,7 @@ var duration = 350;
 var openDrawerWidth = '320px';
 var closedDrawerWidth = '0px';
 
+var isDrawerOpen = false;
 function toggleFileDrawer(){
 
 	$targetDrawer = $('#file-drawer');
@@ -34,34 +35,14 @@ function toggleSettingsDrawer(){
 function executeDrawerToggle($target, $others){
 
 	var w = $targetDrawer.width();
-	var isDrawerOpen = w > 50;
-	var newDrawerWidth = isDrawerOpen ? closedDrawerWidth:openDrawerWidth;
+	var isDrawerCurrentlyOpen = w > 50;
+	var newDrawerWidth = isDrawerCurrentlyOpen ? closedDrawerWidth:openDrawerWidth;
 	
 	$target.animate( {width: newDrawerWidth}, duration);
 	//$others.animate( {width: 0}, duration);
+	isDrawerOpen = !isDrawerCurrentlyOpen;
 
 }
-
-// function setDrawerButtonStyle(drawerOpen){
-// 	var ss = '<br><br><br><br><br><br>'; // spacer string
-// 	if ( drawerOpen ){
-		
-// 		$('.drawer-button').html("<span>" + "▶" +ss +  "▶" +ss + "▶" +ss + "▶"+ss + "▶" + "</span>");
-// 		// $('.drawer-button').css('box-shadow', '-2px 2px 4px #222');
-// 		// $('.drawer-button').css('-webkit-border-top-right-radius', '10px');	
-// 		// $('.drawer-button').css('-webkit-border-bottom-right-radius', '10px');
-		
-// 	}
-//     else{
-//     	//$('.drawer-button').html("<span>" + "◀" +ss +   "◀" +ss + "◀" +ss + "◀"+ss + "◀" + "</span>");
-// 		$('.drawer-button').html("<span>" + "▶" +ss +  "▶" +ss + "▶" +ss + "▶"+ss + "▶" + "</span>");
-
-// ///    	$('.drawer-button').html("◀" + spacerString + "H<br>I<br>D<br>E" + spacerString + "◀");
-//     	// $('.drawer-button').css('box-shadow', '0px 0px 0px #222');
-// 		// $('.drawer-button').css('-webkit-border-top-right-radius', '0px');	
-//   //   	$('.drawer-button').css('-webkit-border-bottom-right-radius', '0px');
-//     }
-// }
 
 function toggleAC3(){
 	if ( $('#chk_show_ac3').attr('checked') )
@@ -83,11 +64,11 @@ function listingSelected(){
 function loadVideo(){
 
 		$name = $(this).html();
-		$path = "./" + $(this).data('path');
+		$path = "../" + $(this).data('path');
 
 		$player = $('#player');
 		$player.attr('src', $path);
-		$player.attr('poster', 'static/loading2.gif');
+		$player.attr('poster', '../static/images/loading2.gif');
 		$player.attr("controls","controls");
 	
 		//$player.get(0).pause();
@@ -98,7 +79,8 @@ function loadVideo(){
 
 		$('#video-title').html("Now Showing: " + $path);
 
-		toggleFileDrawer();
+		if (isDrawerOpen)
+			toggleFileDrawer();
 }
 
 
@@ -119,10 +101,20 @@ function initializeTheDrawer(){
 
 	$('.listing').click(loadVideo);
 
+	$('.listing.AC3').hide();
+
 	$('.chk_show_ac3').click(toggleAC3);
 	$('.chk_show_ac3').click();  // execute method once
 }
 
+function checkForInputFile(){
+	inputName = $('#selected_video').data('selected_video');
+	
+	if ($(this).data('path') === $('#selected_video').data('name')){
+		$(this).click()
+		return;
+	}
+}
 
 $(document).ready(function() {
 	// HACK to set the background of the body to fill the window
@@ -131,15 +123,15 @@ $(document).ready(function() {
 		$('body').height($(window).height()); 
 	})
 
-
 	//toggleDrawer();
 	initializeTheDrawer();
-	
-	
+
 	// Disable scrolling up and down
 	document.body.style.overflow = 'hidden';
 
 	// set the background color on the odd listings 
+
+	$('.listing').each(checkForInputFile)
 
 });	
 

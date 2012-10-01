@@ -4,8 +4,8 @@ function itemClicked(){
 	name = $(this).children('.grid-item-title').html();
 	path = $(this).data('path');
 
-	alert(name + " " + path);
-
+	console.log('./player/' + name);
+	window.location = ('./player/' + name);
 }
 
 

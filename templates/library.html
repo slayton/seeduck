@@ -1,0 +1,27 @@
+<!doctype html>
+<html >
+	<head>
+		<title>SEEDuck Video Library</title>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles/library.css') }}">		
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles/effects.css') }}">
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles/misc.css') }}">		
+		<script src="{{ url_for('static', filename='scripts/jquery.js') }}"></script>		
+		<script src="{{ url_for('static', filename='scripts/library.js') }}"></script>	
+	</head>
+	<body class='stream-background'>
+		<div id='background-div' class='gradient-background'></div>
+		<div id='grid-holder'>
+			<div class='grid-spacer'><p></p></div>
+			{% for n, p, a, v in fileData %}
+			<div class='grid-item' data-path="{{p}}">
+				<div class='grid-item-title'>{{n}}</div>
+				<div class='grid-item-image'> </div>
+				<div class='grid-item-icon {{a}}'> </div>
+			</div>
+			{% endfor %}			
+			<div class='grid-spacer'></div>
+		</div>
+	</body>
+	
+</html>	

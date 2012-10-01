@@ -4,6 +4,18 @@ html{
 	background-repeat : no-repeat;
 }
 
+#back-button{
+	position: absolute;
+	left:25px;
+}
+#back-button{
+	opacity: .4;
+}
+
+#back-button:hover{
+	opacity: .6;
+}
+
 #player{
 
 	width:100%;
@@ -28,8 +40,8 @@ html{
 }
 .drawer-button#file-drawer-button{
 	top:0px;
-	height:70%;
-}
+	height:100%;
+}/*
 #upload-drawer-button{
 	top:70%;
 	height:15%;
@@ -37,7 +49,7 @@ html{
 #settings-drawer-button{
 	top:85%;
 	height:15%;
-}
+}*/
 
 .drawer
 {
@@ -53,8 +65,8 @@ html{
 }
 .drawer#file-drawer{
 	top: 0px;
-    height:70%;
-}
+    height:100%;
+}/*
 .drawer#upload-drawer{
 	top: 70%;
     height:15%;
@@ -62,7 +74,7 @@ html{
 .drawer#settings-drawer{
 	top: 85%;
     height:15%;
-}
+}*/
 
 .drawer-area{
 	position:absolute;

@@ -12,12 +12,12 @@
 	</head>
 	<body >
 	<div id='root-url' data-url="{{url_for('static', filename='downloads/')}}"></div>
-	<div id='video-title'></div>	
-	
+	<a href="../library"><img id='back-button' src="{{ url_for('static', filename='images/arrow-left.png')}}"></a>
+	<div id='video-title'></div>
 	<div id="video-container">
 		<div class='splash-holder'>
 			<div class='splash depth'> <p>SEEDuck</p> </div>
-			<div class='sub-splash'> <p>embrace the waterfowl swarm</p> </div>
+			<div class='sub-splash'> <p>watch the waterfowl</p> </div>
 		</div>
 		<video  id="player" source src="" type="video/mp4" />
 	</div>
@@ -27,11 +27,11 @@
 		<div class='drawer-area'>
 		{% for n, p, a, v in fileData %}
 			<!--<div class='listing' data-path='{{p}}' data-vc='{{v}}' data-ac='{{a}}'> {{n}} </div>-->
-			<div class='listing {{a}}' data-path='{{p}}'> {{n}} </div>
+			<div class='listing {{a}}' data-path='{{p}}'>{{n}} </div>
 		{% endfor %}
 		</div>
 	</div>
-
+<!--
 	<div id='upload-drawer-button' class='drawer-button vertical-button'></div>
 	<div class="drawer" id='upload-drawer'>
 		<div class='drawer-area'></div>
@@ -40,10 +40,10 @@
 	<div id='settings-drawer-button' class='drawer-button vertical-button'></div>
 	<div class="drawer" id='settings-drawer'>
 		<div class='drawer-area'></div>
-	</div>
+	</div> -->
 
-	<img src="{{ url_for('static', filename='pre-loading.gif') }}" class='pre-cache'/>
-
+	<img src="{{ url_for('static', filename='images/loading2.gif') }}" class='pre-cache'/>
+	<div id='selected_video' data-name='{{videoPath}}'></div>
 	</body>
 	
 </html>	
