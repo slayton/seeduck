@@ -1,13 +1,14 @@
 <!doctype html>
-<html id='stream-background'>
+<html class='gradient-background'>
 	<head>
 		<title>SEEDuck Player</title>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='player.css') }}">		
-		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='effects.css') }}">
-		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='misc.css') }}">		
-		<script src="{{ url_for('static', filename='jquery.js') }}"></script>		
-		<script src="{{ url_for('static', filename='player.js') }}"></script>	
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles/player.css') }}">		
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles/effects.css') }}">
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles/misc.css') }}">		
+		<script src="{{ url_for('static', filename='scripts/jquery.js') }}"></script>		
+		<script src="{{ url_for('static', filename='scripts/player.js') }}"></script>	
+		
 	</head>
 	<body >
 	<div id='root-url' data-url="{{url_for('static', filename='downloads/')}}"></div>
@@ -23,7 +24,7 @@
 		
 	<div id='file-drawer-button' class='drawer-button vertical-button'></div>
 	<div class="drawer" id='file-drawer'>
-		<div class='file-list'>
+		<div class='drawer-area'>
 		{% for n, p, a, v in fileData %}
 			<!--<div class='listing' data-path='{{p}}' data-vc='{{v}}' data-ac='{{a}}'> {{n}} </div>-->
 			<div class='listing {{a}}' data-path='{{p}}'> {{n}} </div>
@@ -33,12 +34,12 @@
 
 	<div id='upload-drawer-button' class='drawer-button vertical-button'></div>
 	<div class="drawer" id='upload-drawer'>
-		
+		<div class='drawer-area'></div>
 	</div>
 
 	<div id='settings-drawer-button' class='drawer-button vertical-button'></div>
 	<div class="drawer" id='settings-drawer'>
-		
+		<div class='drawer-area'></div>
 	</div>
 
 	<img src="{{ url_for('static', filename='pre-loading.gif') }}" class='pre-cache'/>

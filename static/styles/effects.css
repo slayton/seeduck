@@ -1,5 +1,11 @@
-#stream-background{
-
+#background-div{
+	position:absolute;
+	left:0px;
+	right:0px;
+	top:0px;
+	bottom:0px;
+}
+.gradient-background{
 	/* IE10 Consumer Preview */ 
 	background-image: -ms-radial-gradient(center, circle closest-corner, #575757 0%, #000000 100%);
 	background-image: -ms-linear-gradient(bottom, #474747 0%, #1C1C1C 100%);

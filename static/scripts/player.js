@@ -73,30 +73,32 @@ function toggleAC3(){
 }
 
 function listingSelected(){
-	if( $('#chk_play_video').attr('checked') )
-		loadVideo();
 
-	$('.listing').removeClass('selected');
-	$(this).addClass('selected');
+	// $('.listing').removeClass('selected');
+	// $(this).addClass('selected');
+
+	loadVideo();
 	
 }
 function loadVideo(){
 
-		toggleDrawer();
 		$name = $(this).html();
 		$path = "./" + $(this).data('path');
 
 		$player = $('#player');
 		$player.attr('src', $path);
-		$player.attr('poster', 'static/pre-loading.gif');
+		$player.attr('poster', 'static/loading2.gif');
 		$player.attr("controls","controls");
 	
+		//$player.get(0).pause();
 		$player.get(0).load();
 		$player.get(0).play();
 	
 		$('.splash-holder').hide();
 
 		$('#video-title').html("Now Showing: " + $path);
+
+		toggleFileDrawer();
 }
 
 
@@ -115,7 +117,7 @@ function initializeTheDrawer(){
 	$('#upload-drawer-button').click(toggleUploadDrawer);
 	$('#settings-drawer-button').click(toggleSettingsDrawer);
 
-	$('.listing').click(listingSelected);
+	$('.listing').click(loadVideo);
 
 	$('.chk_show_ac3').click(toggleAC3);
 	$('.chk_show_ac3').click();  // execute method once
@@ -132,7 +134,6 @@ $(document).ready(function() {
 
 	//toggleDrawer();
 	initializeTheDrawer();
-	
 	
 	
 	// Disable scrolling up and down

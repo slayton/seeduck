@@ -1,7 +1,11 @@
-import os, re, json
+import os, re, json, urllib2
 from filenamefilter import FileNameFilter as FNF
 from pymediainfo import MediaInfo
+from xml.dom.minidom import parse, parseString
 
+APIKEY = 'A759044985ADC3E7';
+BASE_URL ='http://thetvdb.com/api'
+	
 def listFilesInDirectory(path):
 	
 	fnf = FNF('static/tag_filter');
@@ -13,11 +17,11 @@ def listFilesInDirectory(path):
 	audioCodecs = []
 	videoCodecs = []
 
-	for path,dirs,files in os.walk(path):
+	for path,dirs,files in os.walk(path, followlinks=True):
 		for fn in files:
 			if getFileExtension(fn) in fTypeFilt:
 				
-				f = fnf.filterStringRE(fn) # filter out un wanted tags
+				f = fnf.filterString(fn) # filter out un wanted tags
 				f = re.sub('[.]', ' ', f, f.count('.')-1) #replace all but last . with ' '
 				fileNames.append(f)
 				
@@ -85,7 +89,14 @@ def getMediaInfoForFile(file):
 
 	return c
 
+def getPosterForSeriesName(seriesName):
+	getSeriesUrl = BASE_URL + '/GetSeries.php?seriesname="' + seriesName + '"';
+	print getSeriesUrl
+	# u = urllib2.urlopen(getSeriesUrl)
+	# dom=parse(u)
+	# print dom
 
+	return getSeriesUrl
 
 
 
