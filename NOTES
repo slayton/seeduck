@@ -4,7 +4,7 @@ REQUIREMENTS:
 	dom
 	flask
 	requests
-
+	PIL
 
 ================ using pymediainfo ======================
 

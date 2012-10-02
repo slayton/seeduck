@@ -20,7 +20,7 @@ def listFilesInDirectory(path):
 				f = fnf.filterString(fn) # filter out un wanted tags
 				f = re.sub('[.]', ' ', f, f.count('.')-1) #replace all but last . with ' '
 				f = f.split('.') # split on . to remove extension
-				fileNames.append(f[0])
+				fileNames.append(f[0].title())
 				
 				filePaths.append(os.path.join(path,fn))
 				
